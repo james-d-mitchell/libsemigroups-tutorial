@@ -18,6 +18,15 @@ The webpage can then be compiled and served by running the following command in 
 mkdocs serve
 ```
 
+The site header displays the tutorial release tag when built by the release
+workflow, with a link to that release on GitHub. Local builds display `dev`.
+To preview a release badge locally, set `TUTORIAL_VERSION` and
+`TUTORIAL_RELEASE_TAG`, for example:
+
+```bash
+TUTORIAL_VERSION=v0.2.0 TUTORIAL_RELEASE_TAG=v0.2.0 mkdocs serve
+```
+
 ## Adding content
 
 To add content to the worksheet, simply add a new markdown file in any subfolder of the `docs/` directory and

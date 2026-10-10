@@ -6,6 +6,7 @@ watch:
 
 theme:
   name: material
+  custom_dir: overrides
   logo: images/logo.svg
   favicon: images/favicon.png
   palette:
@@ -38,6 +39,9 @@ plugins:
   # - privacy
   - search
   - awesome-nav
+
+hooks:
+  - hooks/release_version.py
 
 markdown_extensions:
   - attr_list

@@ -17,9 +17,24 @@ jobs:
     steps:
       - uses: actions/configure-pages@v6
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: 3.x
+      - name: Set tutorial version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          if [ -n "$RELEASE_TAG" ]; then
+            printf 'TUTORIAL_VERSION=%s\n' "$RELEASE_TAG" >> "$GITHUB_ENV"
+            printf 'TUTORIAL_RELEASE_TAG=%s\n' "$RELEASE_TAG" >> "$GITHUB_ENV"
+          elif tag=$(git describe --tags --exact-match HEAD 2>/dev/null); then
+            printf 'TUTORIAL_VERSION=%s\n' "$tag" >> "$GITHUB_ENV"
+            printf 'TUTORIAL_RELEASE_TAG=%s\n' "$tag" >> "$GITHUB_ENV"
+          else
+            printf 'TUTORIAL_VERSION=dev\n' >> "$GITHUB_ENV"
+          fi
       - run:
           pipx run --with mkdocs-material --with mkdocs-awesome-nav mkdocs build
           --clean

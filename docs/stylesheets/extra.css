@@ -2,6 +2,26 @@
   text-align: center;
 } */
 
+/* Keep the release visible alongside the site or page title, including mobile. */
+.md-header__topic {
+  gap: 0.4rem;
+}
+
+.md-header__topic > .md-ellipsis {
+  min-width: 0;
+}
+
+.tutorial-release {
+  align-self: center;
+  flex: 0 0 auto;
+  border: 1px solid currentColor;
+  border-radius: 0.2rem;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.65rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
 .column {
   float: left;
   width: 50%;

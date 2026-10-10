@@ -1,0 +1,7 @@
+{% if config.extra.tutorial_release_url %}
+  <a class="tutorial-release" href="{{ config.extra.tutorial_release_url | e }}"
+     aria-label="Tutorial release {{ config.extra.tutorial_version | e }}"
+     title="View this release on GitHub">{{ config.extra.tutorial_version | e }}</a>
+{% else %}
+  <span class="tutorial-release" title="Development build">{{ config.extra.tutorial_version | e }}</span>
+{% endif %}
